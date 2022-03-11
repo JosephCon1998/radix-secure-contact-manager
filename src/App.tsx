@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import DesktopIcon from './components/Core/DesktopIcon'
+import DeletePrompt from './components/Windows/Prompts/DeletePrompt'
+import EditContactPrompt from './components/Windows/MainApp/EditContact'
+import FirstTime from './components/Windows/FirstTime'
+import IncorrectPasswordAlert from './components/Windows/Alerts/IncorrectPasswordAlert'
+import Login from './components/Windows/Login'
+import MainApp from './components/Windows/MainApp/MainApp'
+import NewContactPrompt from './components/Windows/MainApp/NewContact'
+import useStore from './zustand/createStore'
+import Taskbar from './components/Taskbar/Taskbar'
 
-function App() {
+const App = () => {
+  const windowState = useStore(state => state.windowState)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <div className="h-screen w-screen bg-wgreen cursor-MsDefault p-4">
+        <DesktopIcon />
+        {windowState.firstTime && <FirstTime />}
+        {windowState.login && <Login />}
+        {windowState.mainApp && <MainApp />}
+        {windowState.newContact && <NewContactPrompt />}
+        {windowState.editContact && <EditContactPrompt />}
+        {windowState.incorrectPassword && <IncorrectPasswordAlert />}
+        {windowState.deletePrompt && <DeletePrompt />}
+      </div>
+      <Taskbar />
+    </>
+  )
 }
 
-export default App;
+export default App

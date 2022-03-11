@@ -7,7 +7,67 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  overflow: hidden;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .msBorder {
+    @apply border border-transparent border-r-black border-b-black border-l-[#E7E7E7] border-t-[#E7E7E7];
+  }
+}
+@font-face {
+  font-family: 'MSSansSerif';
+  src: url(../public/MS\ Sans\ Serif\ 8pt.ttf);
+}
+
+@font-face {
+  font-family: 'MSSansSerifBold';
+  src: url(../public/MS\ Sans\ Serif\ 8pt\ bold.ttf);
+}
+
+/* Sine Wave */
+.sinAnimate {
+  animation: upDown 1.5s alternate infinite ease-in-out;
+}
+@keyframes upDown {
+  to {
+    transform: translatey(10px);
+  }
+}
+@keyframes translate {
+  to {
+    transform: translatex(900%);
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #d2d2d2;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b8b8b8;
+  border-right: 1px solid black;
+  border-bottom: 2px solid black;
+  border-top: 2px solid #d8d8d8;
+  border-left: 2px solid #d8d8d8;
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: #858585;
 }
